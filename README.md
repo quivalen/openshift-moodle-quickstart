@@ -1,4 +1,4 @@
-Moodle on OpenShift
+Moodle on OpenShift (Autoscaling doesn't work - WIP)
 ======================
 
 This git repository helps you get up and running quickly w/ a Moodle installation
