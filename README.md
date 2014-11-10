@@ -43,5 +43,5 @@ GIT_ROOT/.openshift/action_hooks/deploy:
 Security Considerations
 -----------------------
 Consult the Moodle documentation for best practices regarding securing your moodle installation.  OpenShift
-automatically generates unique secret keys for your deployment into wp-config.php, but you may feel more
+automatically creates an username and passoword (admin/moodle) so change it ASAP. You may feel more
 comfortable following the Moodle documentation directly.
