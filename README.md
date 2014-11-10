@@ -1,7 +1,7 @@
-WordPress on OpenShift
+Moodle on OpenShift
 ======================
 
-This git repository helps you get up and running quickly w/ a WordPress installation
+This git repository helps you get up and running quickly w/ a Moodle installation
 on OpenShift.  The backend database is MySQL and the database name is the
 same as your application name (using getenv('OPENSHIFT_APP_NAME')).  You can name
 your application whatever you want.  However, the name of the database will always
@@ -15,14 +15,13 @@ Create an account at https://www.openshift.com and install the client tools (run
 
 Create a php-5.4 application (you can call your application whatever you want)
 
-    rhc app create wordpress php-5.4 mysql-5.5 --from-code=https://github.com/openshift/wordpress-example
+    rhc app create moodle php-5.4 mysql-5.5 --from-code=https://github.com/quivalen/openshift-moodle-quickstart
 
 That's it, you can now checkout your application at:
 
-    http://wordpress-$yournamespace.rhcloud.com
+    http://moodle-$yournamespace.rhcloud.com
 
-You'll be prompted to set an admin password and name your WordPress site the first time you visit this
-page.
+Username is admin and password is moodle
 
 Note: When you upload plugins and themes, they'll get put into your OpenShift data directory
 on the gear ($OPENSHIFT_DATA_DIR).  If you'd like to check these into source control, download the
@@ -43,6 +42,6 @@ GIT_ROOT/.openshift/action_hooks/deploy:
 
 Security Considerations
 -----------------------
-Consult the WordPress documentation for best practices regarding securing your wordpress installation.  OpenShift
+Consult the Moodle documentation for best practices regarding securing your moodle installation.  OpenShift
 automatically generates unique secret keys for your deployment into wp-config.php, but you may feel more
-comfortable following the WordPress documentation directly.
+comfortable following the Moodle documentation directly.

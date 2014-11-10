@@ -2,9 +2,9 @@
 
 # To update the version shipped in this quickstart, bump this variable:
 #
-install_version="4.0"
+install_version="2.7"
 
-# Download and install WordPress
+# Download and install Moodle
 
 install_dir=${OPENSHIFT_BUILD_DEPENDENCIES_DIR}${install_version}
 
@@ -12,7 +12,7 @@ install_dir=${OPENSHIFT_BUILD_DEPENDENCIES_DIR}${install_version}
 current_version_dir=${OPENSHIFT_DATA_DIR}current
 
 #
-# If WordPress is already installed in the current gear, there
+# If Moodle is already installed in the current gear, there
 # is nothing to build :-)
 #
 [ -d "${current_version_dir}" ] && exit 0
@@ -20,22 +20,13 @@ current_version_dir=${OPENSHIFT_DATA_DIR}current
 mkdir -p $install_dir
 
 pushd ${install_dir} >/dev/null
-curl -Ls http://wordpress.org/wordpress-${install_version}.tar.gz > wordpress-${install_version}.tar.gz
+curl -Ls http://download.moodle.org/stable27/moodle-2.7.tgz > moodle.tar.gz
 
-# Verify the sources
+
+# Install Moodle
 #
-tarball_md5=$(md5sum wordpress-${install_version}.tar.gz | cut -d ' ' -f 1)
-wordpress_md5=$(curl -Ls http://wordpress.org/wordpress-${install_version}.tar.gz.md5)
-
-if [ "${tarball_md5}" != "${wordpress_md5}" ]; then
-  echo "ERROR: WordPress ${install_version} MD5 checksum mismatch."
-  exit 1;
-fi
-
-# Install WordPress
-#
-tar --strip-components=1 -xzf wordpress-${install_version}.tar.gz
-rm -rf wordpress-${install_version}.tar.gz
+tar --strip-components=1 -xzf moodle.tar.gz
+rm -rf moodle.tar.gz
 echo $install_version > ${OPENSHIFT_BUILD_DEPENDENCIES_DIR}.current_version
 
 popd >/dev/null
