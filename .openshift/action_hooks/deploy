@@ -35,4 +35,11 @@ if [ -z "$OPENSHIFT_MYSQL_DB_HOST" ]
 then
     exit 5
 fi
-php ${OPENSHIFT_REPO_DIR}php/admin/cli/install.php --lang=IT --wwwroot="http://"$OPENSHIFT_APP_DNS --dbhost=$OPENSHIFT_MYSQL_DB_HOST --dbuser=$OPENSHIFT_MYSQL_DB_USERNAME --dbpass=$OPENSHIFT_MYSQL_DB_PASSWORD --dbport=$OPENSHIFT_MYSQL_DB_PORT --adminpass=moodle --agree-license --non-interactive --shortname=Moodle --fullname="Moodle Openshift Install"
+# Confirm database exists, if not create it
+if ! /usr/bin/mysql -u "$OPENSHIFT_MYSQL_DB_USERNAME" --password="$OPENSHIFT_MYSQL_DB_PASSWORD" -h "$OPENSHIFT_MYSQL_DB_HOST" -P "$OPENSHIFT_MYSQL_DB_PORT" -e "select * from mdl_config;" moodle > /dev/null 2>&1
+then
+    echo "Creating database"
+    php ${OPENSHIFT_REPO_DIR}php/admin/cli/install.php --lang=IT --wwwroot="http://"$OPENSHIFT_APP_DNS --dbhost=$OPENSHIFT_MYSQL_DB_HOST --dbuser=$OPENSHIFT_MYSQL_DB_USERNAME --dbpass=$OPENSHIFT_MYSQL_DB_PASSWORD --dbport=$OPENSHIFT_MYSQL_DB_PORT --adminpass=moodle --agree-license --non-interactive --shortname=Moodle --fullname="Moodle Openshift Install"
+else
+    echo "Database already configured."
+fi
