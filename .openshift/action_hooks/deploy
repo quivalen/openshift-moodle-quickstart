@@ -55,7 +55,7 @@ global \$CFG;
 
 \$CFG->dbtype    = 'mysqli';
 \$CFG->dblibrary = 'native';
-\$CFG->dbhost    = \'OPENSHIFT_MYSQL_DB_HOST\';
+\$CFG->dbhost    = \'$OPENSHIFT_MYSQL_DB_HOST\';
 \$CFG->dbname    = 'moodle';
 \$CFG->dbuser    = \'$OPENSHIFT_MYSQL_DB_USERNAME\';
 \$CFG->dbpass    = \'$OPENSHIFT_MYSQL_DB_PASSWORD\';
