@@ -45,7 +45,8 @@ else
     #creating moodledata directory (synched in the future)
     mkdir $OPENSHIFT_DATA_DIR/moodledata
     #creating config.php at runtime
-    cat <<EOF > php/config.php
+    touch $OPENSHIFT_DATA_DIR/current/config.php
+    cat <<EOF > $OPENSHIFT_DATA_DIR/current/config.php
 <?php  // For scaling - Runtime generated
 
 unset(\$CFG);
