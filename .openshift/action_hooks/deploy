@@ -55,19 +55,19 @@ global \$CFG;
 
 \$CFG->dbtype    = 'mysqli';
 \$CFG->dblibrary = 'native';
-\$CFG->dbhost    = $OPENSHIFT_MYSQL_DB_HOST;
+\$CFG->dbhost    = \'OPENSHIFT_MYSQL_DB_HOST\';
 \$CFG->dbname    = 'moodle';
-\$CFG->dbuser    = $OPENSHIFT_MYSQL_DB_USERNAME;
-\$CFG->dbpass    = $OPENSHIFT_MYSQL_DB_PASSWORD;
+\$CFG->dbuser    = \'$OPENSHIFT_MYSQL_DB_USERNAME\';
+\$CFG->dbpass    = \'$OPENSHIFT_MYSQL_DB_PASSWORD\';
 \$CFG->prefix    = 'mdl_';
 \$CFG->dboptions = array (
   'dbpersist' => 0,
-  'dbport' => $OPENSHIFT_MYSQL_DB_PORT,
+  'dbport' => \'$OPENSHIFT_MYSQL_DB_PORT\',
   'dbsocket' => '',
 );
 
-\$CFG->wwwroot   = $OPENSHIFT_APP_DNS;
-\$CFG->dataroot  = $OPENSHIFT_DATA_DIR/moodledata;
+\$CFG->wwwroot   = \'$OPENSHIFT_APP_DNS\';
+\$CFG->dataroot  = \'${OPENSHIFT_DATA_DIR}moodledata\';
 \$CFG->admin     = 'admin';
 
 \$CFG->directorypermissions = 02777;
