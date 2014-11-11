@@ -47,7 +47,6 @@ else
     #creating config.php at runtime
     touch $OPENSHIFT_DATA_DIR/current/config.php
     cat <<EOF > $OPENSHIFT_DATA_DIR/current/config.php
-cat <<EOF > config.php
 <?php  // For scaling - Runtime generated
 unset(\$CFG);
 global \$CFG;
