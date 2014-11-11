@@ -42,6 +42,8 @@ then
     php ${OPENSHIFT_REPO_DIR}php/admin/cli/install.php --lang=IT --wwwroot="http://"$OPENSHIFT_APP_DNS --dbhost=$OPENSHIFT_MYSQL_DB_HOST --dbuser=$OPENSHIFT_MYSQL_DB_USERNAME --dbpass=$OPENSHIFT_MYSQL_DB_PASSWORD --dbport=$OPENSHIFT_MYSQL_DB_PORT --adminpass=moodle --agree-license --non-interactive --shortname=Moodle --fullname="Moodle Openshift Install"
 else
     echo "Database already configured. Scaling up"
+    #creating moodledata directory (synched in the future)
+    mkdir $OPENSHIFT_DATA_DIR/moodledata
     #creating config.php at runtime
     cat <<EOF > php/config.php
 <?php  // For scaling - Runtime generated
