@@ -61,7 +61,7 @@ global \$CFG;
 \$CFG->prefix    = 'mdl_';
 \$CFG->dboptions = array (
   'dbpersist' => 0,
-  'dbport' => '$OPENSHIFT_MYSQL_DB_PORT\',
+  'dbport' => '$OPENSHIFT_MYSQL_DB_PORT',
   'dbsocket' => '',
 );
 \$CFG->wwwroot   = 'http://$OPENSHIFT_APP_DNS';
